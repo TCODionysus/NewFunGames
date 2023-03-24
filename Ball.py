@@ -11,8 +11,8 @@ class Ball:
 
         self.image = pygame.image.load('Images/Animal.png')
         self.aRect = self.image.get_rect()
-        self.width = self.aRect.width()
-        self.height = self.aRect.height()
+        self.width = self.aRect.width
+        self.height = self.aRect.height
         self.maxWidth = windowWidth - self.width
         self.maxHeight = windowHeight - self.height
 
