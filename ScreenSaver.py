@@ -1,8 +1,9 @@
 import pygame.locals
 import sys
 import random
-from Ball import *
-from Snake import *
+from Ball import Ball
+from Snake import Snake
+from E import E
 
 Black = (0, 0, 0)
 Green = (0, 255, 0)
@@ -30,6 +31,9 @@ while True:
             if event.key == pygame.K_s:
                 newSnake = Snake(window, WindowWidth, WindowHeight)
                 ballList.append(newSnake)
+            if event.key == pygame.K_e:
+                newE = E(window, WindowWidth, WindowHeight)
+                ballList.append(newE)
 
     for ball in ballList:
         ball.update()
