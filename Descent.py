@@ -109,10 +109,10 @@ while True:
     pygame.draw.rect(window, Black, Square)
     pygame.draw.rect(window, Black, Hole)
     if level == 49:
-        window.blit(warning, (150, 300))
         endgame += 1
+    if 41 <= endgame <= 60:
+        window.blit(warning, (120, 300))
     if endgame == 61:
-        FPS = 15
         window.blit(f1, (0, 0))
     if endgame == 62:
         window.blit(f2, (0, 0))
