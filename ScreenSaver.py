@@ -2,8 +2,10 @@ import pygame.locals
 import sys
 import random
 from Ball import *
+from Snake import *
 
 Black = (0, 0, 0)
+Green = (0, 255, 0)
 WindowWidth = 1200
 WindowHeight = 600
 FPS = 30
@@ -21,9 +23,13 @@ while True:
             pygame.quit()
             sys.exit()
 
-        if event.type == pygame.MOUSEBUTTONUP:
-            newBall = Ball(window, WindowWidth, WindowHeight)
-            ballList.append(newBall)
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_c:
+                newBall = Ball(window, WindowWidth, WindowHeight)
+                ballList.append(newBall)
+            if event.key == pygame.K_s:
+                newSnake = Snake(window, WindowWidth, WindowHeight)
+                ballList.append(newSnake)
 
     for ball in ballList:
         ball.update()
