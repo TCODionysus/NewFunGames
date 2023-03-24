@@ -10,6 +10,7 @@ class Ball:
         self.windowHeight = windowHeight
 
         self.image = pygame.image.load('Images/Animal.png')
+        self.sound = pygame.mixer.Sound('Sounds/MeowSFX.wav')
         self.aRect = self.image.get_rect()
         self.width = self.aRect.width
         self.height = self.aRect.height
@@ -26,8 +27,10 @@ class Ball:
     def update(self):
         if self.X < 0 or self.X >= self.maxWidth:
             self.XSpeed = -self.XSpeed
+            self.sound.play()
         if self.Y < 0 or self.Y >= self.maxHeight:
             self.YSpeed = -self.YSpeed
+            self.sound.play()
 
         self.X += self.XSpeed
         self.Y += self.YSpeed
