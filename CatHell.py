@@ -4,6 +4,7 @@ import random
 
 # 2 - Define constants
 BLACK = (0, 0, 0)
+White = (255, 255, 255)
 WINDOW_WIDTH = 1000
 WINDOW_HEIGHT = 600
 FRAMES_PER_SECOND = 30
@@ -17,6 +18,8 @@ move_distance = 10
 
 # 3 - Initialize the world
 pygame.init()
+pygame.font.init()
+font = pygame.font.SysFont('ComicSans', 14)
 window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption('Cat Hell')
 clock = pygame.time.Clock()
@@ -32,9 +35,11 @@ pygame.mixer.music.load('Sounds/CatHellBG.wav')
 pygame.mixer.music.play(-1, 0.0)
 
 # 5 - Initialize variables
+hell = font.render('there is no escape', True, White)
 ballX = random.randrange(BallMAX_WIDTH)
 ballY = random.randrange(BallMAX_HEIGHT)
 targetRect = pygame.locals.Rect(targetX, targetY, 656, 93)
+text = False
 
 # 6 - Loop forever
 while True:
@@ -63,6 +68,7 @@ while True:
         targetX = random.randrange(TargetMAX_WIDTH)
         targetY = random.randrange(TargetMAX_HEIGHT)
         targetRect = pygame.locals.Rect(targetX, targetY, 656, 93)
+        text = True
         HISS.play()
 
     # 9 - Clear the window
@@ -72,6 +78,9 @@ while True:
     window.blit(GRASS, (0, 0))
     window.blit(ANIMAL, (ballX, ballY))
     window.blit(SNAKE, (targetX, targetY))
+    if text is True:
+        window.blit(hell, (ballX+ballWidth//2, ballY+ballHeight//2))
+        text = False
 
     # 11 - Update the window
     pygame.display.update()
